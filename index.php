@@ -17,13 +17,14 @@ if (isset($_POST['item_id']) && !empty($_POST['item_id'])) {
 
 $sort = 'asc';
 
-if(isset($_GET['sort'])) {
+if (isset($_GET['sort'])) {
     $sort = $_GET['sort'];
 }
 
 ?>
-    <?php require "header.php"?>
-    <body>
+<?php require "header.php" ?>
+
+<body>
     <main>
         <form id="order" action="" method="GET">
             <label for="order-by">Order By</label>
@@ -40,7 +41,7 @@ if(isset($_GET['sort'])) {
             $con = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DB);
 
             if (!empty($_GET['item'])) {
-                $desired_item = $_GET["item"];
+                $desired_item = mysqli_real_escape_string($con,  $_GET["item"]);
                 $statement = "SELECT * FROM items WHERE item_name LIKE '%$desired_item%' ORDER BY item_price $sort";
                 $query_result = mysqli_query($con, $statement);
                 while ($row = mysqli_fetch_assoc($query_result)) {
@@ -48,7 +49,7 @@ if(isset($_GET['sort'])) {
                     <div class='item-container'>
                         <form action='' method='post'>
                             <input type='hidden' name='item_id' value='.$row[ID]'>
-                            <input type='hidden' class='cart-count' value='<". count($_SESSION['cart']). ">
+                            <input type='hidden' class='cart-count' value='<" . count($_SESSION['cart']) . ">
                             <img src='$row[item_image]'>
                             <h1>$row[item_name]</h1>
                             <h2>$$row[item_price]</h2>
@@ -67,7 +68,7 @@ if(isset($_GET['sort'])) {
                     echo "
                     <div class='item-container'>
                             <input type='hidden' name='item_id' value='.$row[ID]'>
-                            <input type='hidden' class='cart-count' value='".count($_SESSION['cart'])."'>
+                            <input type='hidden' class='cart-count' value='" . count($_SESSION['cart']) . "'>
                             <img src='$row[item_image]'>
                             <h1>$row[item_name]</h1>
                             <h2>$$row[item_price]</h2>

@@ -3,7 +3,6 @@ require "database.php";
 require "header.php";
 
 $con = mysqli_connect(HOSTNAME, USERNAME, PASSWORD, DB);
-header('Content-type: application/json');
 
 if (isset($_POST['existing-username'], $_POST['existing-password'])) {
     $username = $_POST['existing-username'];
@@ -17,19 +16,19 @@ if (isset($_POST['existing-username'], $_POST['existing-password'])) {
         $_SESSION['name'] = $username;
         header("Location:index.php");
     } else {
-        $login_json = array("login_error"=>true);
+        $login_json = array("login_error" => true);
         echo json_encode($login_json);
     }
 }
 
-if(isset($_POST['new-username'], $_POST['new-password'])) {
+if (isset($_POST['new-username'], $_POST['new-password'])) {
     $username = $_POST['new-username'];
     $password = md5($_POST['new-password']);
 
     $statement = "SELECT * FROM users WHERE username = '$username'";
 
     $result = mysqli_query($con, $statement);
-    if(mysqli_fetch_assoc($result) == 0) {
+    if (mysqli_fetch_assoc($result) == 0) {
         $sql_new_user = "INSERT INTO users (user_id, username, password) VALUES (NULL,'$username','$password')";
         mysqli_query($con, $sql_new_user);
     } else {
