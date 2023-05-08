@@ -49,7 +49,7 @@ if (isset($_GET['sort'])) {
                     <div class='item-container'>
                         <form action='' method='post'>
                             <input type='hidden' name='item_id' value='.$row[ID]'>
-                            <input type='hidden' class='cart-count' value='<" . count($_SESSION['cart']) . ">
+                            <input type='hidden' class='cart-count' value='" . count($_SESSION['cart']) . "'>
                             <img src='$row[item_image]'>
                             <h1>$row[item_name]</h1>
                             <h2>$$row[item_price]</h2>
