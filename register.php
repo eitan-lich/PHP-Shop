@@ -5,7 +5,7 @@ require "database.php" ?>
 <?php require "header.php" ?>
 
 <body>
-    <form action="./Authenticate.php" method="POST">
+    <form action="authenticate.php" method="POST">
         <div class="form-group w-50">
             <label for="email-signup">Email address</label>
             <input type="text" class="form-control mb-3" placeholder="Username" name="new-username">
