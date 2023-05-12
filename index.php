@@ -27,12 +27,16 @@ if (isset($_GET['sort'])) {
 <body>
     <main>
         <form id="order" action="" method="GET">
-            <label for="order-by">Order By</label>
-            <select name="sort" id="order-by" onchange="this.form.submit()">
-                <option selected>--Select sort--</option>
-                <option value="asc">Price ascending</option>
-                <option value="desc">Price descending</option>
-            </select>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <label class="input-group-text for=" order-by">Order By</label>
+                </div>
+                <select class="custom-select" name="sort" id="order-by" onchange="this.form.submit()">
+                    <option selected>--------</option>
+                    <option value="asc">Price ascending</option>
+                    <option value="desc">Price descending</option>
+                </select>
+            </div>
         </form>
 
         <div class="items">
@@ -46,8 +50,7 @@ if (isset($_GET['sort'])) {
                 $query_result = mysqli_query($con, $statement);
                 while ($row = mysqli_fetch_assoc($query_result)) {
                     echo "
-                    <div class='item-container'>
-                        <form action='' method='post'>
+                    <div class='item-container'>  
                             <input type='hidden' name='item_id' value='.$row[ID]'>
                             <input type='hidden' class='cart-count' value='" . count($_SESSION['cart']) . "'>
                             <img src='$row[item_image]'>
@@ -58,7 +61,6 @@ if (isset($_GET['sort'])) {
                             <button type='button' class='see-more-btn'>See more</button>
                             <button class='add-cart-btn'>Add to cart</button>
                             <p class='item-description'>$row[item_description]</p>
-                            </form>
                         </div>";
                 }
             } else {

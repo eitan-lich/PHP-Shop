@@ -17,7 +17,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js"></script>
     <script src="https://kit.fontawesome.com/12a8802bc9.js" crossorigin="anonymous"></script>
 </head>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-around">
     <ul class="navbar-nav mr-auto">
         <li class="navbar-item"><a class='nav-link' href="index.php">Home</a></li>
         <li class="navbar-item">
@@ -33,12 +33,10 @@
             } ?>
         </li>
         <li>
-            <form action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="GET">
+            <form class=".form-inline" action="<?php htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="GET">
                 <div class="input-group mb-3">
                     <input type="text" class="form-control" name="item" placeholder="Search" aria-describedby="basic-addon1">
-                    <div class="input-group-prepend">
-                        <button class="input-group-text" id="basic-addon1"><i class="fa-solid fa-magnifying-glass fa-lg"></i>‎</button>
-                    </div>
+                    <button class="btn btn-outline-success" type="submit">Search</button>
                 </div>
             </form>
         </li>
