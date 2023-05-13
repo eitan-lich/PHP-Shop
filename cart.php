@@ -36,28 +36,38 @@ if (isset($_POST['clear_cart'])) {
                 </div>";
             }
             echo "
-            <button class='checkout-btn'>Continue to checkout</button>
-            <button class='clear-cart-btn'>Clear cart</button>
-            <button type='button' class='btn btn-primary' data-toggle='modal' data-target='#test'>Click here</button>
-            <div class='modal fade' id='test' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
-            <div class='modal-dialog' role='document'>
-                <div class='modal-content'>
-                <div class='modal-header'>
-                    <h5 class='modal-title' id='exampleModalLabel'>Modal title</h5>
-                    <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
-                    <span aria-hidden='true'>&times;</span>
-                    </button>
-                </div>
-                <div class='modal-body'>
-                    ...
-                </div>
-                <div class='modal-footer'>
-                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>Close</button>
-                    <button type='button' class='btn btn-primary'>Save changes</button>
-                </div>
+            <button type='button' class='checkout-btn' data-bs-toggle='modal' data-bs-target='#exampleModal'>
+            Continue to checkout
+            </button>
+            <div class='modal fade' id='exampleModal' tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+                <div class='modal-dialog'>
+                    <div class='modal-content'>
+                        <div class='modal-header'>
+                            <h1 class='modal-title fs-5' id='exampleModalLabel'>Checkout</h1>
+                            <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
+                        </div>
+                        <div class='modal-body'>
+                            <label>Email address
+                                <input type='email' class='form-control'>
+                         </label>
+                            <label>Password
+                                <input type='password' class='form-control'>
+                         </label>
+                            <label>Address
+                                <input type='address' class='form-control'>
+                          </label>
+                            <label>Phone number
+                                <input type='tel' pattern='[0-9]{3}-[0-9]{2}-[0-9]{3}' class='form-control'>
+                         </label>
+                        </div>
+                        <div class='modal-footer'>
+                            <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Close</button>
+                            <button type='button' class='btn btn-primary'>Confirm order</button>
+                        </div>
+                    </div>
                 </div>
             </div>
-            </div>";
+            <button class='clear-cart-btn'>Clear cart</button>";
         }
         ?>
     </main>
